@@ -143,12 +143,14 @@ fun HalamanSatu(
 @Preview
 @Composable
 fun HalamanSatuPreview() {
-    // Di sini Anda dapat memanggil fungsi HalamanSatu dengan data dummy
+    val flavors = listOf("Natural", "Vanilla", "Lemon", "Milk", "Lyche")
+
     HalamanSatu(
-        pilihanRasa = listOf("Rasa1", "Rasa2", "Rasa3"),
-        onSelectionChanged = { /* Tindakan ketika pilihan berubah */ },
-        onConfirmButtonClicked = { /* Tindakan ketika tombol konfirmasi diklik */ },
-        onNextButtonClicked = { /* Tindakan ketika tombol selanjutnya diklik */ },
-        onCancelButtonClicked = { /* Tindakan ketika tombol batalkan diklik */ }
+        pilihanRasa = flavors,
+        onSelectionChanged = { /* Handle selection change */ },
+        onConfirmButtonClicked = { /* Handle confirm button click */ },
+        onNextButtonClicked = { /* Handle next button click */ },
+        onCancelButtonClicked = { /* Handle cancel button click */ }
     )
 }
+

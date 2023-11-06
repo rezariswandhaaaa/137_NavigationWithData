@@ -82,5 +82,21 @@ fun HalamanDua (
     }
 }
 
+@Preview
+@Composable
+fun HalamanDuaPreview(){
+    val orderUIState = OrderUIState(
+        jumlah = 3,
+        rasa = "Vanilla",
+        harga = "15.99"
+    )
+
+
+    HalamanDua(
+        orderUIState = orderUIState,
+        onCancelButtonClicked = { /* Handle cancel button click */ }
+    )
+}
+
 
 
