@@ -38,7 +38,7 @@ fun HalamanDua(
     onSelectionChanged: (String) -> Unit,
     onConfirmButtonClicked: (Int) -> Unit,
     onNextButtonClicked: () -> Unit,
-    onCancelButtonClicked: () -> Unit,
+    onBackButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ){
     var rasaYgDipilih by rememberSaveable { mutableStateOf("") }
@@ -124,10 +124,10 @@ fun HalamanDua(
             ){
                 OutlinedButton(
                     modifier = Modifier.weight(1f),
-                    onClick = onCancelButtonClicked
+                    onClick = onBackButtonClicked
 
                 ){
-                    Text(stringResource(R.string.cancel))
+                    Text(stringResource(R.string.btn_back))
                 }
                 Button(
                     modifier = Modifier.weight(1f),
@@ -151,7 +151,7 @@ fun HalamanDuaPreview() {
         onSelectionChanged = { /* Handle selection change */ },
         onConfirmButtonClicked = { /* Handle confirm button click */ },
         onNextButtonClicked = { /* Handle next button click */ },
-        onCancelButtonClicked = { /* Handle cancel button click */ }
+        onBackButtonClicked = { /* Handle cancel button click */ }
     )
 }
 
