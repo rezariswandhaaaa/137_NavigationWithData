@@ -141,5 +141,19 @@ fun HalamanDua(
     }
 }
 
+@Preview
+@Composable
+fun HalamanDuaPreview() {
+    val flavors = listOf("Natural", "Vanilla", "Lemon", "Milk", "Lyche")
+
+    HalamanDua(
+        pilihanRasa = flavors,
+        onSelectionChanged = { /* Handle selection change */ },
+        onConfirmButtonClicked = { /* Handle confirm button click */ },
+        onNextButtonClicked = { /* Handle next button click */ },
+        onCancelButtonClicked = { /* Handle cancel button click */ }
+    )
+}
+
 
 
