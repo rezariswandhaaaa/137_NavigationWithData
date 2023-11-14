@@ -140,17 +140,5 @@ fun HalamanSatu(
     }
 }
 
-@Preview
-@Composable
-fun HalamanSatuPreview() {
-    val flavors = listOf("Natural", "Vanilla", "Lemon", "Milk", "Lyche")
 
-    HalamanSatu(
-        pilihanRasa = flavors,
-        onSelectionChanged = { /* Handle selection change */ },
-        onConfirmButtonClicked = { /* Handle confirm button click */ },
-        onNextButtonClicked = { /* Handle next button click */ },
-        onCancelButtonClicked = { /* Handle cancel button click */ }
-    )
-}
 
