@@ -1,4 +1,6 @@
-@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class)
+@file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class
+)
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -29,7 +31,6 @@ import com.example.activity5.R
 @Composable
 fun HalamanSatu(
     onSubmitButtonClicked: (MutableList<String>) -> Unit,
-    onNextButtonClicked: () -> Unit,
     onBackButtonClicked: () -> Unit
 ){
     var namaText by remember { mutableStateOf("") }
@@ -43,10 +44,11 @@ fun HalamanSatu(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxWidth()
     ){
+        Spacer(modifier = Modifier.height(20.dp))
         Row {
             Text(text = "Data Pelanggan", fontWeight = FontWeight.Bold)
         }
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(20.dp))
 
         OutlinedTextField(
             value = namaText,
@@ -68,9 +70,6 @@ fun HalamanSatu(
 
         Spacer(modifier = Modifier.padding(10.dp))
 
-        Button(onClick = {onSubmitButtonClicked(listData)}) {
-            Text(text = stringResource(id = R.string.btn_submit))
-        }
 
         Row (modifier = Modifier
             .fillMaxWidth()
@@ -88,7 +87,7 @@ fun HalamanSatu(
             }
             Button(
                 modifier = Modifier.weight(1f),
-                onClick = onNextButtonClicked
+                onClick = {onSubmitButtonClicked(listData)}
             ){
                 Text(stringResource(R.string.next))
             }
@@ -100,5 +99,5 @@ fun HalamanSatu(
 @Preview
 @Composable
 fun HalamanSatuPreview(){
-    HalamanSatu(onSubmitButtonClicked = {}, onNextButtonClicked = {}) {}
+    HalamanSatu(onSubmitButtonClicked = {}) {}
 }

@@ -56,7 +56,7 @@ fun HalamanTiga(
         Text(text = stringResource(id = R.string.notlp))
         Text(text = orderUIState.tlp)
         Divider()
-        Spacer(modifier = Modifier.padding(16.dp))
+        Spacer(modifier = Modifier.padding(8.dp))
 
         Column (
             modifier = Modifier.fillMaxWidth()
@@ -69,7 +69,7 @@ fun HalamanTiga(
                     Text(text = item.second.toString(), fontWeight = FontWeight.Bold)
                 }
                 Divider(thickness = dimensionResource(R.dimen.thickness_divider))
-                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_small)))
             }
 
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
