@@ -34,6 +34,7 @@ import com.example.activity5.data.SumberData.flavors
 
 enum class PengelolaHalaman {
     Home,
+    Fomulir,
     Rasa,
     Summary
 }
