@@ -105,14 +105,14 @@ fun EsJumboApp(
                     onSelectionChanged = {viewModel.setRasa(it)},
                     onConfirmButtonClicked = {viewModel.setJumlah(it)},
                     onNextButtonClicked = {navController.navigate(PengelolaHalaman.Summary.name)},
-                    onBackButtonClicked = {}
+                    onBackButtonClicked = {cancelOrderAndNavigateToFomulir(viewModel, navController)}
                 )
             }
 
             composable(route = PengelolaHalaman.Summary.name){
                 HalamanTiga(
                     orderUIState = uiState,
-                    onBackButtonClicked = {}
+                    onBackButtonClicked = {cancelOrderAndNavigateToRasa(viewModel, navController)}
                 )
             }
 
@@ -129,9 +129,19 @@ private fun cancelOrderAndNavigateToHome(
     navController.popBackStack(PengelolaHalaman.Home.name, inclusive = false)
 }
 
-private fun cancelOrderAndNavigateToRasa(
+private fun cancelOrderAndNavigateToFomulir(
+    viewModel : OrderViewModel,
     navController: NavHostController
 ){
+    viewModel.resetOrder()
+    navController.popBackStack(PengelolaHalaman.Fomulir.name, inclusive = false)
+}
+
+private fun cancelOrderAndNavigateToRasa(
+    viewModel : OrderViewModel,
+    navController: NavHostController
+){
+    viewModel.resetOrder()
     navController.popBackStack(PengelolaHalaman.Rasa.name, inclusive = false)
 }
 
