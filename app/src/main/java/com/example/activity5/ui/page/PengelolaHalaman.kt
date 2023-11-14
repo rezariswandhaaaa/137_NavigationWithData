@@ -68,6 +68,56 @@ fun EsJumboApp(
     viewModel: OrderViewModel = viewModel(),
     navController: NavHostController =rememberNavController()
 ){
+    Scaffold (
+        topBar = {
+            EsJumboAppBar(
+                bisaNavigasiBack = false,
+                navigasiUp = {}
+            )
+        }
+    ){rezaRiswandha ->
+        val uiState by viewModel.stateUI.collectAsState()
+
+        NavHost(
+            navController = navController,
+            startDestination = PengelolaHalaman.Home.name,
+            modifier = Modifier.padding(rezaRiswandha)
+        ){
+
+            composable(route = PengelolaHalaman.Home.name){
+                HalamanHome (
+                    onNextButtonClicked = {navController.navigate(PengelolaHalaman.Fomulir.name)}
+                )
+            }
+
+            composable(route = PengelolaHalaman.Fomulir.name){
+                HalamanSatu(
+                    onSubmitButtonClicked = { viewModel.setContact(it) },
+                    onNextButtonClicked = {navController.navigate(PengelolaHalaman.Rasa.name)},
+                    onBackButtonClicked = {cancelOrderAndNavigateToHome(viewModel,navController)}
+                )
+            }
+
+            composable(route = PengelolaHalaman.Rasa.name){
+                val context = LocalContext.current
+                HalamanDua (
+                    pilihanRasa = flavors.map { id -> context.resources.getString(id)},
+                    onSelectionChanged = {viewModel.setRasa(it)},
+                    onConfirmButtonClicked = {viewModel.setJumlah(it)},
+                    onNextButtonClicked = {navController.navigate(PengelolaHalaman.Summary.name)},
+                    onBackButtonClicked = {}
+                )
+            }
+
+            composable(route = PengelolaHalaman.Summary.name){
+                HalamanTiga(
+                    orderUIState = uiState,
+                    onBackButtonClicked = {}
+                )
+            }
+
+        }
+    }
 
 }
 
