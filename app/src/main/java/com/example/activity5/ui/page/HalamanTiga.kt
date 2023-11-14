@@ -19,15 +19,16 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.example.activity5.R
 import com.example.activity5.data.OrderUIState
 import com.example.activity5.ui.komponen.FormatLabelHarga
 
+
 @Composable
 fun HalamanTiga(
     orderUIState: OrderUIState,
-    onCancelButtonClicked: () -> Unit,
-    modifier: Modifier = Modifier
+    onBackButtonClicked: () -> Unit
 ){
     val items = listOf(
         Pair(stringResource(R.string.quantity), orderUIState.jumlah),
@@ -35,15 +36,33 @@ fun HalamanTiga(
     )
 
     Column (
-        modifier = modifier,
-        verticalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
     ){
+
+        Text(text = stringResource(id = R.string.nama))
+        Text(text = orderUIState.nama)
+        Divider()
+        Spacer(modifier = Modifier.padding(16.dp))
+
+
+        Text(text = stringResource(id = R.string.alamat))
+        Text(text = orderUIState.alamat)
+        Divider()
+        Spacer(modifier = Modifier.padding(16.dp))
+
+
+        Text(text = stringResource(id = R.string.notlp))
+        Text(text = orderUIState.tlp)
+        Divider()
+        Spacer(modifier = Modifier.padding(16.dp))
+
         Column (
-            modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium)),
-            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small))
+            modifier = Modifier.fillMaxWidth()
         ){
             items.forEach{ item ->
-                Column {
+                Column (modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)){
                     Text(item.first.uppercase())
                     Text(text = item.second.toString(), fontWeight = FontWeight.Bold)
                 }
@@ -57,6 +76,8 @@ fun HalamanTiga(
                 modifier = Modifier.align(Alignment.End)
             )
         }
+
+
 
         Row (
             modifier = Modifier
@@ -74,12 +95,19 @@ fun HalamanTiga(
                 }
                 OutlinedButton(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = onCancelButtonClicked
+                    onClick = onBackButtonClicked
                 ) {
-                    Text(stringResource(R.string.cancel))
+                    Text(stringResource(R.string.btn_back))
                 }
             }
         }
     }
+}
+
+
+@Preview
+@Composable
+fun HalamanTigaPreview(){
+    HalamanTiga(orderUIState = OrderUIState(), onBackButtonClicked = {})
 }
 

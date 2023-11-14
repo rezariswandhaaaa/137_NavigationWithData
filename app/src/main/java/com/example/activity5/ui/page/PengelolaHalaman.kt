@@ -1,9 +1,10 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
-    ExperimentalMaterial3Api::class
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class
 )
 
 package com.example.activity5.ui.page
 
+import HalamanSatu
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -53,7 +54,7 @@ fun EsJumboAppBar(
                 IconButton(onClick = navigasiUp) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back_button))
+                        contentDescription = stringResource(R.string.btn_back))
                 }
             }
         }
@@ -66,39 +67,6 @@ fun EsJumboApp(
     viewModel: OrderViewModel = viewModel(),
     navController: NavHostController =rememberNavController()
 ){
-    Scaffold (
-        topBar = {
-            EsJumboAppBar(
-                bisaNavigasiBack = false,
-                navigasiUp = {/* TODO: implement back navigation */}
-            )
-        }
-    ){innerPadding ->
-        val uiState by viewModel.stateUI.collectAsState()
-        NavHost(
-            navController = navController,
-            startDestination = PengelolaHalaman.Home.name,
-            modifier = Modifier.padding(innerPadding)
-        ){
-            composable(route = PengelolaHalaman.Home.name){
-                HalamanHome (onNextButtonClicked = {navController.navigate(PengelolaHalaman.Rasa.name)})
-            }
-            composable(route = PengelolaHalaman.Rasa.name){
-                val context = LocalContext.current
-                HalamanSatu (
-                    pilihanRasa = flavors.map { id -> context.resources.getString(id)},
-                    onSelectionChanged = { viewModel.setRasa(it)},
-                    onConfirmButtonClicked = {viewModel.setJumlah(it)},
-                    onNextButtonClicked = {navController.navigate(PengelolaHalaman.Summary.name)},
-                    onCancelButtonClicked = {cancelOrderAndNavigateToHome(viewModel,navController)}
-                    )
-            }
-            composable(route = PengelolaHalaman.Summary.name){
-                HalamanDua(orderUIState = uiState, onCancelButtonClicked = {cancelOrderAndNavigateToRasa(navController)},)
-            }
-        }
-
-    }
 
 }
 
