@@ -62,11 +62,14 @@ fun HalamanTiga(
             modifier = Modifier.fillMaxWidth()
         ){
             items.forEach{ item ->
-                Column (modifier = Modifier.fillMaxWidth().padding(vertical = 16.dp)){
+                Column (modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp)){
                     Text(item.first.uppercase())
                     Text(text = item.second.toString(), fontWeight = FontWeight.Bold)
                 }
                 Divider(thickness = dimensionResource(R.dimen.thickness_divider))
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.padding_medium)))
             }
 
             Spacer(modifier = Modifier.height(dimensionResource(R.dimen.padding_small)))
