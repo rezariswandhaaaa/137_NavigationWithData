@@ -34,7 +34,7 @@ fun HalamanHome(
     onNextButtonClicked: () -> Unit
 ){
     val image = painterResource(id = R.drawable.img)
-    Column (modifier = Modifier,
+    Column (modifier = Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.SpaceBetween){
         OutlinedCard(
             colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface,),
