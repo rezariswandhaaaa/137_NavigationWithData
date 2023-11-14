@@ -24,7 +24,7 @@ import com.example.activity5.data.OrderUIState
 import com.example.activity5.ui.komponen.FormatLabelHarga
 
 @Composable
-fun HalamanDua (
+fun HalamanTiga(
     orderUIState: OrderUIState,
     onCancelButtonClicked: () -> Unit,
     modifier: Modifier = Modifier

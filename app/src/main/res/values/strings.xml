@@ -1,9 +1,13 @@
 <resources>
-    <string name="app_name">MilkShake</string>
-    <string name="back_button">Kembali</string>
+    <string name="app_name">Caffee Gembong</string>
+    <string name="btn_submit">Submit</string>
+    <string name="nama">Nama</string>
+    <string name="alamat">Alamat</string>
+    <string name="notlp">No Telp</string>
+    <string name="btn_back">Back</string>
     <string name="confirm">Konfirmasi</string>
-    <string name="next">Lanjut</string>
-    <string name="cancel">Batal</string>
+    <string name="next">Next</string>
+    <string name="cancel">Cancel</string>
     <string name="vanilla">Vanilla</string>
     <string name="lemon">Lemon</string>
     <string name="natural">Natural</string>
