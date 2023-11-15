@@ -1,10 +1,11 @@
 @file:OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
-    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class
+    ExperimentalMaterial3Api::class, ExperimentalMaterial3Api::class,
+    ExperimentalMaterial3Api::class
 )
 
 package com.example.activity5.ui.page
 
-import HalamanSatu
+import  HalamanSatu
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -96,7 +97,7 @@ fun EsJumboApp(
                         viewModel.setContact(it)
                         navController.navigate(PengelolaHalaman.Rasa.name)
                                             },
-                    onBackButtonClicked = {cancelOrderAndNavigateToHome(viewModel,navController)}
+                    onBackButtonClicked = {backOrderAndNavigateToHome(viewModel,navController)}
                 )
             }
 
@@ -107,14 +108,14 @@ fun EsJumboApp(
                     onSelectionChanged = {viewModel.setRasa(it)},
                     onConfirmButtonClicked = {viewModel.setJumlah(it)},
                     onNextButtonClicked = {navController.navigate(PengelolaHalaman.Summary.name)},
-                    onBackButtonClicked = {cancelOrderAndNavigateToFomulir(viewModel, navController)}
+                    onBackButtonClicked = {backOrderAndNavigateToFomulir(viewModel, navController)}
                 )
             }
 
             composable(route = PengelolaHalaman.Summary.name){
                 HalamanTiga(
                     orderUIState = uiState,
-                    onBackButtonClicked = {cancelOrderAndNavigateToRasa(viewModel, navController)}
+                    onBackButtonClicked = {backOrderAndNavigateToRasa(viewModel, navController)}
                 )
             }
 
@@ -123,7 +124,7 @@ fun EsJumboApp(
 
 }
 
-private fun cancelOrderAndNavigateToHome(
+private fun backOrderAndNavigateToHome(
     viewModel : OrderViewModel,
     navController: NavHostController
 ){
@@ -131,7 +132,7 @@ private fun cancelOrderAndNavigateToHome(
     navController.popBackStack(PengelolaHalaman.Home.name, inclusive = false)
 }
 
-private fun cancelOrderAndNavigateToFomulir(
+private fun backOrderAndNavigateToFomulir(
     viewModel : OrderViewModel,
     navController: NavHostController
 ){
@@ -139,7 +140,7 @@ private fun cancelOrderAndNavigateToFomulir(
     navController.popBackStack(PengelolaHalaman.Fomulir.name, inclusive = false)
 }
 
-private fun cancelOrderAndNavigateToRasa(
+private fun backOrderAndNavigateToRasa(
     viewModel : OrderViewModel,
     navController: NavHostController
 ){
